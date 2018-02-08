@@ -1,0 +1,143 @@
+<!--
+ * Copyright (c) 2005, Bear Bibeault
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *  - Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *  - Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *  - The name of Bear Bibeault may not be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
+ *
+ * This software is provided by the copyright holders and contributors "as is"
+ * and any express or implied warranties, including, but not limited to, the
+ * implied warranties of merchantability and fitness for a particular purpose
+ * are disclaimed. In no event shall the copyright owner or contributors be
+ * liable for any direct, indirect, incidental, special, exemplary, or
+ * consequential damages (including, but not limited to, procurement of
+ * substitute goods or services; loss of use, data, or profits; or business
+ * interruption) however caused and on any theory of liability, whether in
+ * contract, strict liability, or tort (including negligence or otherwise)
+ * arising in any way out of the use of this software, even if advised of the
+ * possibility of such damage.
+-->
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+    <description>
+      <![CDATA[
+        Tag library to support the
+        <a href="http://www.javaranch.com/newsletter.jsp" target="_blank">JavaRanch Journal</a> article <b>Scriptless JSP<br/>
+        Pages: The Constant Constants Consternation</b> by <a href="mailto:bear@javaranch.com">Bear Bibeault</a>.
+      ]]>
+    </description>
+
+    <display-name>Constant Constants Consternation Tag Set</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>ccc</short-name>
+    <uri>ccc</uri>
+
+    <tag>
+        <description>
+            <![CDATA[
+              Creates a scoped variable representing the value of the referenced class constant.
+            ]]>
+        </description>
+        <name>setConstant</name>
+        <tag-class>org.bibeault.jrjournal.ccc.SetConstantTag</tag-class>
+        <tei-class>org.bibeault.jrjournal.ccc.SetConstantTag$ExtraInfo</tei-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>
+              <![CDATA[
+                The fully qualified path of the class constant.
+              ]]>
+            </description>
+            <name>constant</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+              <![CDATA[
+                The name of the scoped variable to create.
+              ]]>
+            </description>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+              <![CDATA[
+                The scope in which the scoped variable is to be created. If specified, must be one of: page, request, session or application. If omitted, the variable is created in page context.
+              ]]>
+            </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <description>
+          <![CDATA[
+            Establishes a scoped variable that implements the <code>java.util.Map</code> interface whose keys and values are the names and values of a named class' class constants.
+          ]]>
+        </description>
+        <name>constantsMap</name>
+        <tag-class>org.bibeault.jrjournal.ccc.ConstantsMapTag</tag-class>
+        <tei-class>org.bibeault.jrjournal.ccc.ConstantsMapTag$ExtraInfo</tei-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>
+              <![CDATA[
+                The fully qualified name of the class whose class constants are to be established in the generated Map instance.
+              ]]>
+            </description>
+            <name>className</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+              <![CDATA[
+                The name of the scoped variable to create.
+              ]]>
+            </description>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+              <![CDATA[
+                The scope in which the scoped variable is to be created. If specified, must be one of: page, request, session or application. If omitted, the variable is created in page context.
+              ]]>
+            </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <function>
+      <description>
+        <![CDATA[
+          Function that returns the value of a named class constant.
+        ]]>
+      </description>
+      <name>constantValue</name>
+      <function-class>org.bibeault.jrjournal.ccc.ClassConstantInspector</function-class>
+      <function-signature>
+        java.lang.Object getValue( java.lang.String )
+      </function-signature>
+    </function>
+
+</taglib>

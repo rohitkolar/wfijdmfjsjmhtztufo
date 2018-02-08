@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib 
+    version="2.1" 
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+
+    <display-name>Custom Functions</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>func</short-name>
+    <uri>custom-functions</uri>
+
+    <function>
+        <name>isMobileDevice</name>
+        <function-class>com.smartsocieties.utility.SSUtils</function-class>
+        <function-signature>boolean isMobileDevice(javax.servlet.http.HttpServletRequest)</function-signature>
+    </function>
+</taglib>
